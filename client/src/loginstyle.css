@@ -1,0 +1,180 @@
+/* General Body Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif; /* A modern, clean font */
+  background: linear-gradient(to bottom, #e9e5e5, #008037); /* Beautiful gradient background */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px; /* Set max-width to control card width */
+  padding: 40px;
+  margin: 20px;
+  background: #fff; /* White background for the form card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+}
+
+/* Login Card */
+.login-card {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h2 {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+  position: relative;
+}
+
+/* Form Labels */
+.form-group label {
+  font-size: 16px;
+  color: black;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Input Fields */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+
+ 
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 10px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #f7f7f7;
+}
+
+/* Input Focus Styling */
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #008037;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+  margin-bottom: 15px; 
+}
+
+/* Submit Button */
+.btn-login {
+  width: 100%;
+  padding: 16px;
+  background-color: #008037;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: bold;
+}
+
+.btn-login:hover {
+  background-color: #006f2b;
+  transform: scale(1.05);
+}
+
+/* Link Styling */
+.signup-link {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #555;
+}
+
+.signup-link a {
+  color: #008037;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.forgot-password {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.forgot-password a {
+  color: #008037;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="password"],
+  .btn-login {
+    font-size: 16px;
+  }
+
+  .signup-link {
+    font-size: 13px;
+  }
+
+  .forgot-password {
+    font-size: 13px;
+  }
+}
+
+/* Additional Styling for Small Screens */
+@media (max-width: 360px) {
+  .login-card {
+    padding: 20px;
+  }
+
+  .btn-login {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .login-container {
+    margin: 10px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="password"] {
+    font-size: 14px;
+  }
+}

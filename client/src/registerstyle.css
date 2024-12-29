@@ -1,0 +1,237 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #e9e5e5, #008037); /* Gradient Background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Signup Container */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px; /* Set max-width to control card width */
+  padding: 40px;
+  margin: 20px;
+  background: #fff; /* White background for the form card */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+}
+
+/* Signup Card */
+.signup-card {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for focus */
+}
+
+.signup-card h2 {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Form Row */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Adds gap between First Name and Last Name fields */
+  }
+  
+  .form-row .form-group {
+    width: 50%; /* Ensures both First Name and Last Name have enough space */
+  }
+  
+  /* Form Labels */
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #000; /* Text color black */
+    font-weight: bold;
+  }
+  
+  /* Input Fields */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group input[type="tel"],
+  .form-group textarea {
+    width: 95%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  }
+  
+  /* Focused Input Styling */
+  .form-group input[type="text"]:focus,
+  .form-group input[type="email"]:focus,
+  .form-group input[type="password"]:focus,
+  .form-group input[type="tel"]:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #008037; /* Green outline on focus */
+    box-shadow: 0 0 5px rgba(0, 128, 55, 0.5); /* Subtle green glow */
+  }
+  
+  /* Textarea */
+  textarea {
+    resize: none;
+  }
+
+  .user-category-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .user-category-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px; /* Adds spacing below the label */
+  }
+  
+  /* User Category Dropdown */
+  .user-category-select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Smooth rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for interactions */
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+  }
+  
+  /* Focused Dropdown Styling */
+  .user-category-select:focus {
+    border-color: #008037; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(0, 128, 55, 0.5); /* Green glow effect */
+    outline: none;
+  }
+  
+  /* Hover Effect on Dropdown */
+  .user-category-select:hover {
+    border-color: #008037; /* Darker border color on hover */
+  }
+
+  /* Submit Button */
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008037; /* Green background */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .btn-submit:hover {
+    background-color: #006b2c; /* Darker green on hover */
+    transform: scale(1.02); /* Slight scale effect */
+  }
+  
+  /* Login Link */
+  .login-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555; /* Gray text for login link */
+  }
+  
+  .login-link a {
+    color: #008037; /* Green link color */
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Terms Link */
+  .terms-link {
+    color: #008037; /* Green color for terms link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .terms-link:hover {
+    color: #006b2c; /* Darker green on hover */
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Media Query for Small Screens */
+  @media screen and (max-height: 700px) {
+    body {
+      align-items: flex-start;
+      padding: 20px;
+    }
+  
+    .signup-container {
+      margin-top: 20px;
+    }
+  }
+  
+  /* Popup Styling */
+  .popup-message {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 15%; /* Slightly below the top for better positioning */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b2f2bb; /* Light green for a soft aesthetic */
+    color: #2d6a4f; /* Darker green for text contrast */
+    padding: 10px 20px; /* Reduced padding for compact size */
+    border-radius: 8px; /* Softer rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 10px; /* Slightly smaller font */
+    text-align: center;
+    z-index: 1000; /* Ensure it appears above other elements */
+    max-width: 200px; /* Smaller width for compact look */
+    word-wrap: break-word; /* Ensure long text wraps */
+    animation: fadeIn 0.5s ease; /* Smooth fade-in effect */
+  }
+  
+  /* Active state for the popup */
+  .popup-message.active {
+    display: block; /* Show the popup when active */
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
