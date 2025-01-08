@@ -28,12 +28,12 @@ app.use('/api/users', userRoutes);
 app.use('/api/complaints', complaintRoutes);
 
 // Database Connection
-mongoose.connect('mongodb://127.0.0.1:27017/full-mern-stack-jwt', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("Connected to MongoDB"))
-  .catch(err => console.error("Could not connect to MongoDB", err));
+
+const connectionString = 'mongodb+srv://shanzayaltaf28:Shan%4027SA@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster';
+
+mongoose.connect(connectionString)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch(err => console.error("Error connecting to MongoDB Atlas", err));
 
 // JWT Secret
 const JWT_SECRET = process.env.JWT_SECRET || 'secret123'; // Use environment variable
