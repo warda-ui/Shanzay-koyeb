@@ -8,13 +8,13 @@ const User = require('./models/user.model');
 const Complaint = require('./models/schema');
 require('dotenv').config();
 const app = express();
-const port = 1337;
 const router = express.Router();
 const userRoutes = require('./routes/user.routes');
 const complaintRoutes = require('./routes/complaintRoutes');
 const { v4: uuidv4 } = require("uuid");
 const multer = require("multer");
 const path = require('path');
+const port = process.env.PORT || 1337;
 
 
  // Create a router instance
@@ -29,16 +29,27 @@ app.use('/api/complaints', complaintRoutes);
 
 // Database Connection
 
-const connectionString = 'mongodb+srv://shanzayaltaf28:Shan27@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster';
+const dbURI="mongodb+srv://shanzayaltaf28:Shan27@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster";
 
-mongoose.connect(connectionString)
-  .then(() => console.log("Connected to MongoDB Atlas"))
-  .catch(err => console.error("Error connecting to MongoDB Atlas", err));
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log('Successfully connected to MongoDB');
+})
+.catch((err) => {
+  console.log('Error connecting to MongoDB:', err);
+});
+
 
 // JWT Secret
-const JWT_SECRET = process.env.JWT_SECRET || 'secret123'; // Use environment variable
+const JWT_SECRET = process.env.JWT_SECRET || 'secret123';
 
-// Generate JWT Token
+
+
+// Generate JWT Tokens
+
 const generateToken = (user) => {
   return jwt.sign(
     { 
@@ -381,6 +392,7 @@ app.put('/api/profile', authenticateToken, async (req, res) => {
       res.status(500).json({ status: 'error', message: 'Server error' });
   }
 });
+
 
 // Complaint form API
 
