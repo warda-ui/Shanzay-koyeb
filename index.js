@@ -29,7 +29,7 @@ app.use('/api/complaints', complaintRoutes);
 
 // Database Connection
 
-const connectionString = 'mongodb+srv://shanzayaltaf28:Shan%4027SA@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster';
+const connectionString = 'mongodb+srv://shanzayaltaf28:Shan27@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster';
 
 mongoose.connect(connectionString)
   .then(() => console.log("Connected to MongoDB Atlas"))
