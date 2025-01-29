@@ -1,11 +1,19 @@
 {
-  "name": "server",
+  "name": "your-project-name",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^6.2.1",
+    "@mui/material": "^6.2.1",
     "accepts": "^1.3.8",
     "anymatch": "^3.1.3",
     "array-flatten": "^1.1.1",
+    "axios": "^1.7.9",
     "balanced-match": "^1.0.2",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -30,7 +38,7 @@
     "define-data-property": "^1.1.4",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.4.6",
     "ecdsa-sig-formatter": "^1.0.11",
     "ee-first": "^1.1.1",
     "encodeurl": "^2.0.0",
@@ -73,6 +81,7 @@
     "lodash.isplainobject": "^4.0.6",
     "lodash.isstring": "^4.0.1",
     "lodash.once": "^4.1.1",
+    "lottie-react": "^2.4.0",
     "media-typer": "^0.3.0",
     "memory-pager": "^1.5.0",
     "merge-descriptors": "^1.0.3",
@@ -103,6 +112,11 @@
     "qs": "^6.13.0",
     "range-parser": "^1.2.1",
     "raw-body": "^2.5.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "react-router-dom": "^7.0.2",
+    "react-scripts": "5.0.1",
     "readdirp": "^3.6.0",
     "safe-buffer": "^5.2.1",
     "safer-buffer": "^2.1.2",
@@ -130,15 +144,36 @@
     "utils-merge": "^1.0.1",
     "uuid": "^11.0.3",
     "vary": "^1.1.2",
+    "web-vitals": "^4.2.4",
     "webidl-conversions": "^7.0.0",
     "whatwg-url": "^13.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "client": "react-scripts start",
+    "client-build": "react-scripts build",
+    "client-test": "react-scripts test",
+    "client-eject": "react-scripts eject",
+    "dev-all": "concurrently \"npm run dev\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Project combining backend and frontend",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
