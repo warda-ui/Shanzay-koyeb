@@ -47,7 +47,7 @@ const UserDashboard = () => {
     const fetchProfileData = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:1337/api/profile-data', {
+            const response = await fetch('/api/profile-data', {
                 headers: { 'x-access-token': token },
             });
             const data = await response.json();
