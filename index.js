@@ -16,6 +16,19 @@ const multer = require("multer");
 const path = require('path');
 const port = process.env.PORT || 1337;
 
+app.use(express.json());
+
+// CORS (optional if frontend and backend are on the same domain)
+app.use(
+    cors({
+        origin: [
+            'https://static-bird-quallitycompliance-b1f4547b.koyeb.app', // Frontend URL on Koyeb
+            'http://localhost:1337', // For local testing
+        ],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+    })
+);
 
  // Create a router instance
 // Middleware
