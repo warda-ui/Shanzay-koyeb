@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(
     cors({
         origin: [
-            'https://static-bird-quallitycompliance-b1f4547b.koyeb.app', // Frontend URL on Koyeb
+            'https://static-bird-quallitycompliance-b1f4547b.koyeb.app/', // Frontend URL on Koyeb
             'http://localhost:1337', // For local testing
         ],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
