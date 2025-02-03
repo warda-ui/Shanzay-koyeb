@@ -17,18 +17,22 @@ function Login({ setUserRole }) {
     
     async function loginUser(event) {
         event.preventDefault();
-
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('https://static-bird-quallitycompliance-b1f4547b.koyeb.app/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                 },
                 body: JSON.stringify({
                     identifier,
                     password,
                 }),
             });
+        
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
 
             const data = await response.json();

@@ -28,12 +28,11 @@ function Register() {
         const hashedPassword = await bcrypt.hash(password, 10); // Hash the password with a salt of 10
 
         try {
-            const response = await fetch('/api/register', {
+            const response = await fetch('https://static-bird-quallitycompliance-b1f4547b.koyeb.app/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                
                 body: JSON.stringify({
                     name,
                     username,
@@ -42,7 +41,11 @@ function Register() {
                     role,
                 }),
             });
-
+        
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        
             const data = await response.json();
 
             if (!response.ok) {
