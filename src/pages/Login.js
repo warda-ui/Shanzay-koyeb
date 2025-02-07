@@ -18,7 +18,7 @@ function Login({ setUserRole }) {
     async function loginUser(event) {
         event.preventDefault();
         try {
-            const response = await fetch('https://static-bird-quallitycompliance-b1f4547b.koyeb.app/api/login', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,6 +28,7 @@ function Login({ setUserRole }) {
                     identifier,
                     password,
                 }),
+                credentials: 'include',  // Ensure credentials (like cookies) are included in the request
             });
         
             if (!response.ok) {
