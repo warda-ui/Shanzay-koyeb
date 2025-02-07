@@ -26,7 +26,7 @@ const CMDashboard = () => {
 
   // Fetch complaints from the API
   useEffect(() => {
-    Axios.get('http://localhost:1337/api/complaints')
+    Axios.get('/api/complaints')
       .then((response) => {
         setComplaints(response.data);  // Assuming the response data contains an array of complaints
       })
