@@ -16,57 +16,54 @@ function Login({ setUserRole }) {
     const { login } = useAuth(); // Destructure login from useAuth
     
     async function loginUser(event) {
-        event.preventDefault();
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({
-                    identifier,
-                    password,
-                }),
-                credentials: 'include',  // Ensure credentials (like cookies) are included in the request
+    event.preventDefault();
+
+    try {
+        // Fetch API call to the backend
+        const response = await fetch('/api/login', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                identifier,
+                password,
+            }),
+        });
+
+        const data = await response.json();
+        console.log('Response Data:', data); // Debugging: Print response data
+
+        if (response.ok && data.token) {
+            // Store token and user info in AuthContext
+            login({
+                token: data.token,
+                user: data.user,
             });
-        
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
 
+            // Update role in App.js via the setUserRole prop
+            setUserRole(data.user.role);
 
-            const data = await response.json();
-            console.log('Response Data:', data); // Debugging: Print response data
+            // Store user and token in localStorage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
 
-            if (response.ok && data.token) {
-                // Store token and user info in AuthContext
-                login({
-                    token: data.token,
-                    user: data.user,
-                });
-
-                // Update role in App.js via the setUserRole prop
-                setUserRole(data.user.role);
-
-                // Store user and token in localStorage
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.user));
-
-                // Redirect based on role
-                if (data.user.role === 'admin') {
-                    navigate('/admin-dashboard'); // Redirect to admin dashboard
-                } else {
-                    navigate('/user-dashboard'); // Redirect to user dashboard
-                }
+            // Redirect based on role
+            if (data.user.role === 'admin') {
+                navigate('/admin-dashboard'); // Redirect to admin dashboard
             } else {
-                setErrorMessage(data.error || 'Invalid Username/Email or Password');
+                navigate('/user-dashboard'); // Redirect to user dashboard
             }
-        } catch (error) {
-            console.error('Error logging in:', error);
-            setErrorMessage('An error occurred. Please try again later.');
+        } else {
+            // Handle errors returned from the server
+            setErrorMessage(data.error || 'Invalid Username/Email or Password');
         }
+    } catch (error) {
+        // Handle unexpected errors
+        console.error('Error logging in:', error);
+        setErrorMessage('An error occurred. Please try again later.');
     }
+}
 
     const handleSignUp = () => {
         navigate('/register');
