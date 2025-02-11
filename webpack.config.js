@@ -13,5 +13,5 @@ module.exports = {
       "crypto": require.resolve("crypto-browserify"),
     },
   },
-  // Additional Webpack configuration...
 };
+
