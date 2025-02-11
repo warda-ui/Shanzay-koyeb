@@ -10,8 +10,8 @@ module.exports = {
       "util": require.resolve("util/"),
       "zlib": require.resolve("browserify-zlib"),
       "assert": require.resolve("assert/"),
-      "crypto": require.resolve("crypto-browserify"),
     },
   },
+  // Additional Webpack configuration...
 };
 
