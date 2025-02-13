@@ -6,6 +6,8 @@ import './UserDashboard.css'; // Import the custom styles
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 
+const API_BASE_URL = "https://static-bird-quallitycompliance-b1f4547b.koyeb.app";
+
 const UserDashboard = () => {
     const navigate = useNavigate();
     const [tempQuote, setTempQuote] = useState('');
