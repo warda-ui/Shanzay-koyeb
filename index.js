@@ -16,26 +16,26 @@ const multer = require("multer");
 const path = require('path');
 const port = process.env.PORT || 1337;
 
+
 app.use(express.json());
 
 // CORS (optional if frontend and backend are on the same domain)
 app.use(
-  cors({
-    origin: [
-      'https://static-bird-quallitycompliance-b1f4547b.koyeb.app',
-      'http://localhost:1337', // For local testing
-    
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
+    cors({
+        origin: [
+            'https://static-bird-quallitycompliance-b1f4547b.koyeb.app/', // Frontend URL on Koyeb
+            'http://localhost:1337', // For local testing
+        ],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+    })
 );
+
+
 
 
  // Create a router instance
 // Middleware
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static("uploads")); // Serve uploaded files statically
@@ -47,36 +47,35 @@ app.use('/api/users', userRoutes);
 app.use('/api/complaints', complaintRoutes);
 
 
+// Root endpoint (optional)
 app.get('/', (req, res) => {
-  res.send('Hello from your server!'); 
-  // Or render an initial HTML page if you have a frontend
+  res.send('Hello from your server!');
 });
 
-app.get('*', (req, res) => {
+// Handle non-API routes to serve React app
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next(); // Skip serving React for API routes
+  }
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 
-
 // Database Connection
 
-const dbURI="mongodb+srv://shanzayaltaf28:Shan27@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster";
+const uri = "mongodb+srv://shanzayaltaf28:Shan27@cmscluster.y8dcu.mongodb.net/full-mern-stack-jwt?retryWrites=true&w=majority&appName=CMSCluster";
 
-mongoose.connect(dbURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log('Successfully connected to MongoDB');
-})
-.catch((err) => {
-  console.log('Error connecting to MongoDB:', err);
-});
-
-
+// Connect to MongoDB
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Mongoose connected to MongoDB Atlas");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB Atlas with Mongoose:", err);
+  });
 // JWT Secret
 const JWT_SECRET = process.env.JWT_SECRET || 'secret123';
-
 
 
 // Generate JWT Tokens
@@ -508,7 +507,3 @@ app.get('/api/complaints', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-app.get('/', (req, res) => {
-  res.send('Backend is running successfully!');
-});
-
